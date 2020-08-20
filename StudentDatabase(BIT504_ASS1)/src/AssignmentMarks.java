@@ -1,61 +1,98 @@
 
 public class AssignmentMarks
 {
-//	private static String courseName;
-//	private static int assignment1;
-//	private static int assignment2;
-//	private static int assignment3;
-//	
-//	public AssignmentMarks(String name, int mark1, int mark2, int mark3)
-//	{
-//		//		Constructor assigns the values for their respective fields.
-//		//		Create the constructor that uses all the fields above (courseName, assignment1, assignment2, and assignment3).
-//	}
-//	
-//	public void setMark(int assignmentNumber, int mark)
-//	{
-//		//		Used to set the value of the assignments.
-//		//		assignmentNumber represents the number of the assignment to set (assignment1, assignment2, and assignment3).
-//		//		mark is the score of the assignment (0 to 100).
-//	}
-//	
-//	public int getMark(int assignmentNumber)
-//	{
-//		//		Returns the mark for the assignment.
-//		//		assignmentNumber represents the number of the assignment to set (assignment1, assignment2, and assignment3).
-//	}
-//	
-//	public int getAverageMark()
-//	{
-//		//		Returns the average mark for the course (the average of all three assignment marks).
-//		//		To get the average, add all three marks together then divide by 3.	
-//	}
-//	
-//	public String getGrade(int assignmentNumber)
-//	{
-//		//		Returns the grade (such as A, B, C) for the assignment.
-//		//		assignmentNumber represents the number of the assignment to set (assignment1, assignment2, and assignment3).
-//	}
-//	
-//	public String getAverageGrade()
-//	{
-//		//		Returns the average grade for the course.
-//		//		Use the getAverageMark() method to obtain the average mark, then find the grade from this.
-//	}
-//	
-//	public String markToGrade(int mark)
-//	{
-//		//		Returns the grade (A, B, C, and so on) based on the mark given.
-//		//		For example, if the mark is between 95 and 100, return “A+”. Refer to Table 1 to find the marks and grades.
-//	}
-//	
-//	public String setCourseName(String name)
-//	{
-//		//		Sets the value of courseName.
-//	}
-//	
-//	public String getCourseName()
-//	{
-//		//		Returns the value of courseName.
-//	}
+	private String courseName;
+	private int assignment1;
+	private int assignment2;
+	private int assignment3;
+	
+	public AssignmentMarks(String name, int mark1, int mark2, int mark3)
+	{
+		this.courseName = name;
+		this.assignment1 = mark1;
+		this.assignment2 = mark2;
+		this.assignment3 = mark3;
+	}
+	
+	public void setMark(int assignmentNumber, int mark)
+	{
+		switch(assignmentNumber)
+		{
+			case 1:	{ this.assignment1 = mark; break;}
+			case 2:	{ this.assignment2 = mark; break;}
+			case 3:	{ this.assignment3 = mark; break;}
+		}
+	}
+	
+	public int getMark(int assignmentNumber)
+	{
+		int mark = 0;
+		switch(assignmentNumber)
+		{
+			case 1:	{ mark = this.assignment1; break; }
+			case 2:	{ mark = this.assignment2; break; }
+			case 3:	{ mark = this.assignment3; break; }
+		}
+		return mark;
+	}
+	
+	public int getAverageMark()
+	{
+		return (this.assignment1 + this.assignment2 + this.assignment3)/3;
+	}
+	
+	public String getGrade(int assignmentNumber)
+	{
+		String grade = "error";
+		switch(assignmentNumber)
+		{
+			case 1:	{ grade = markToGrade(this.assignment1); break; }
+			case 2:	{ grade = markToGrade(this.assignment2); break; }
+			case 3:	{ grade = markToGrade(this.assignment3); break; }
+		}
+		return grade;
+	}
+	
+	public String getAverageGrade()
+	{
+		return markToGrade(getAverageMark());
+	}
+	
+	public String markToGrade(int mark)
+	{
+		String grade;
+		if (mark >= 95)
+			grade = "A+";
+		else if (mark >= 90)
+			grade = "A";
+		else if (mark >= 85)
+			grade = "A-";
+		else if (mark >= 80)
+			grade = "B+";
+		else if (mark >= 75)
+			grade = "B";
+		else if (mark >= 70)
+			grade = "B-";
+		else if (mark >= 60)
+			grade = "C+";
+		else if (mark >= 50)
+			grade = "C";
+		else if (mark >= 40)
+			grade = "C-";
+		else if (mark >= 0)
+			grade = "D";
+		else
+			grade = "error";
+		return grade;
+	}
+	
+	public void setCourseName(String name)
+	{
+		this.courseName = name;
+	}
+	
+	public String getCourseName()
+	{
+		return this.courseName;
+	}
 }

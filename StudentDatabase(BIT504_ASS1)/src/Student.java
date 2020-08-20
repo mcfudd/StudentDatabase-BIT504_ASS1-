@@ -1,19 +1,34 @@
 
 public class Student
 {
-//	private static int id;
-//	private static String firstName;
-//	private static String lastName;
-//	private static AssignmentMarks mathMarks, englishMarks;
-//	
-//	public Student(int id, String firstName, String lastName)
-//	{
-//		//		Create a constructor that sets the fields id, firstName, and lastName using the parameters provided.
-//	}
-//	
-//	public String getFullName()
-//	{
-//		//		Returns the full name of the student (first name and last name with a space in between).
-//	}
-//	
+	// Student variables
+	public int id;
+	public String firstName;
+	public String lastName;
+	public AssignmentMarks mathMarks;
+	public AssignmentMarks englishMarks;
+	
+	// Student constructor
+	public Student(int id, String firstName, String lastName)
+	{
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	// Student setters
+	private void setID(int studentID) { id = studentID; }
+	private void setFirstName(String fName) { firstName = fName; }
+	private void setLastName(String lName) { lastName = lName; }
+	
+	// return the full name of the student
+	public String getFullName()
+	{
+		String fullName = firstName + " " + lastName;
+		return fullName;		
+	}
+	public int getID()
+	{
+		return id;
+	}
 }
